@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
+  // Allow <Image> to load posters from TMDB's image server
+  images: {
+    remotePatterns: [new URL("https://image.tmdb.org/t/p/**")],
+  },
   turbopack: {
     rules: {
       "*.css": {
