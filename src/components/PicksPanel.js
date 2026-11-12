@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useFavorites } from "./FavoritesProvider";
+import { useRouter } from "next/navigation";
 
 const WORDS = [
   "No",
@@ -22,6 +23,7 @@ const MIN_PICKS = 3;
 
 export default function PicksPanel() {
   const { favorites, removeFavorite } = useFavorites();
+  const router = useRouter();
   const count = favorites.length;
   const countWord = WORDS[count] ?? count;
 
@@ -81,6 +83,7 @@ export default function PicksPanel() {
         </p>
         <button
           disabled={count < MIN_PICKS}
+          onClick={() => router.push("/compare")}
           className="mt-6 h-12 w-full rounded-3xl bg-purple text-sm font-medium hover:bg-purple/85 disabled:cursor-not-allowed disabled:opacity-40"
         >
           Find matches&nbsp;&nbsp;↗
